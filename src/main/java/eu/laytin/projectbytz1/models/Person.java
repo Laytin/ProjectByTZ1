@@ -1,14 +1,26 @@
 package eu.laytin.projectbytz1.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
 public class Person {
+    private int id;
+
+    @NotEmpty(message = "Name should not be empty")
+    @Pattern(regexp = "\"[A-Z]\\w+, [A-Z]\\w+,[A-Z]\\w+")
     private String name;
+
+    @Min(value = 1000, message = "Age should be greater than 0")
+    //@NotEmpty(message = "Name should not be empty")
     private int year;
 
 
     public Person() {
     }
 
-    public Person(String name, int year) {
+    public Person(String name, int year, int id) {
+        this.id = id;
         this.name = name;
         this.year = year;
     }
