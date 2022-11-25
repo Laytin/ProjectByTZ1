@@ -9,10 +9,11 @@ public class Book {
     private int id;
 
     @NotEmpty(message = "Name should not be empty")
-    @Size(min = 2, max = 60, message = "Name should be between 2 and 30 characters")
+    @Size(min = 2, max = 60, message = "Name should be between 2 and 60 characters")
     private String name;
 
     @NotEmpty(message = "Author should not be empty.Format = A.A.Abiggneil")
+    @Size(min = 2, max = 30, message = "Authorname should be between 2 and 30 characters")
     @Pattern(regexp = "[A-Z]\\.[A-Z]\\.[A-Z]\\w+")
     private String author;
 
