@@ -12,7 +12,7 @@ public class Person {
     private String name;
 
     @Min(value = 1900, message = "Age should be greater than 1900")
-    //@NotEmpty(message = "Name should not be empty")
+    @NotEmpty(message = "Year should not be empty")
     private int year;
 
 

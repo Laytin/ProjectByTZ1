@@ -1,4 +1,4 @@
 package eu.laytin.projectbytz1.controllers;
 
-public class PeopleController {
+public class PersonController {
 }

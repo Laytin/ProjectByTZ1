@@ -13,11 +13,12 @@ public class Book {
     private String name;
 
     @NotEmpty(message = "Author should not be empty.Format = A.A.Abiggneil")
-    @Size(min = 2, max = 30, message = "Authorname should be between 2 and 30 characters")
+    @Size(min = 2, max = 60, message = "Authorname should be between 2 and 60 characters")
     @Pattern(regexp = "[A-Z]\\.[A-Z]\\.[A-Z]\\w+")
     private String author;
 
     @Min(value =1000, message = "Age should be greater than 1000")
+    @NotEmpty(message = "Year should not be empty")
     private int year;
 
     public Book(){
