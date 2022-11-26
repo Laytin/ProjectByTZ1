@@ -4,9 +4,10 @@ import eu.laytin.projectbytz1.models.Book;
 import eu.laytin.projectbytz1.models.Person;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public class BookDAO {
     private final JdbcTemplate jbdc;
 
@@ -20,23 +21,22 @@ public class BookDAO {
     }
 
     //Показать с id
-    public Person showIndex(int person_id){
-        return jbdc.query("SELECT * FROM Person WHERE person_id=?", new Object[person_id],
-                new BeanPropertyRowMapper<Person>(Person.class)).stream().findAny().orElse(null);
-
+    public Book showIndex(int book_id){
+        return jbdc.query("SELECT * FROM Book WHERE book_id=?", new Object[book_id],
+                new BeanPropertyRowMapper<Book>(Book.class)).stream().findAny().orElse(null);
     }
 
     //Создать нового
-    public void createPerson(Person person){
-        jbdc.update("INSERT INTO Person(person_name,person_year) VALUES(?,?)", person.getName(), person.getYear());
+    public void createBook(Book book){
+        jbdc.update("INSERT INTO Book(book_name,book_author,book_year) VALUES(?,?,?)", book.getName(),book.getAuthor(), book.getYear());
     }
 
     //Обновить существующего (Попробовать убрать из аргументов id и юзать person.getID())
-    public void updatePerson(int id,Person person){
-        jbdc.update("UPDATE Person SET name=?,year=? WHERE person_id=?",person.getName(),person.getYear(),id);
+    public void updatePerson(int id,Book book){
+        jbdc.update("UPDATE Book SET name=?,author=?,year=? WHERE book_id=?",book.getName(),book.getAuthor(),book.getYear(),id);
     }
     //Удалить с id
     public void deletePerson(int id){
-        jbdc.update("DELETE From PERSON WHERE person_id=?",id);
+        jbdc.update("DELETE From Book WHERE book_id=?",id);
     }
 }

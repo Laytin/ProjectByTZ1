@@ -40,6 +40,6 @@ public class PersonDAO {
     }
     //Удалить с id
     public void deletePerson(int id){
-        jbdc.update("DELETE From PERSON WHERE person_id=?",id);
+        jbdc.update("DELETE From Person WHERE person_id=?",id);
     }
 }
