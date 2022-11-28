@@ -40,4 +40,12 @@ public class Person {
     public void setYear(int year) {
         this.year = year;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
