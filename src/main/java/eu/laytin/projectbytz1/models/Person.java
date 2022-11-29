@@ -8,11 +8,10 @@ public class Person {
     private int id;
 
     @NotEmpty(message = "Name should not be empty")
-    @Pattern(regexp = "\"[A-Z]\\w+, [A-Z]\\w+,[A-Z]\\w+")
+    @Pattern(regexp = "\"[A-Z]\\w+  [A-Z]\\w+ [A-Z]\\w+", message = "Format: A.A.Abc")
     private String name;
 
     @Min(value = 1900, message = "Age should be greater than 1900")
-    @NotEmpty(message = "Year should not be empty")
     private int year;
 
 

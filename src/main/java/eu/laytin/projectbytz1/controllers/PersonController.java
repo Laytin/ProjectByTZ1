@@ -5,9 +5,10 @@ import eu.laytin.projectbytz1.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/person")
@@ -27,5 +28,20 @@ public class PersonController {
         model.addAttribute("person",personDAO.showIndex(id));
         model.addAttribute("books",personDAO.getBooksByPersonId(id));
         return "person/id";
+    }
+
+    @GetMapping("/new")
+    public String createGet(@ModelAttribute("person") Person person){
+        return "person/new";
+    }
+
+    @PostMapping()
+    public String createPost(@ModelAttribute("person") @Valid Person person,
+                             BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "person/new";
+        }
+        personDAO.createPerson(person);
+        return "redirect:/person/index";
     }
 }

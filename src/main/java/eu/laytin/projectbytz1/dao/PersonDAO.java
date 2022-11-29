@@ -28,7 +28,6 @@ public class PersonDAO {
     public Person showIndex(int person_id){
         return jbdc.query("SELECT * FROM Person WHERE id=?", new Object[]{person_id},
                 new BeanPropertyRowMapper<Person>(Person.class)).stream().findAny().orElse(null);
-
     }
 
     //Создать нового
