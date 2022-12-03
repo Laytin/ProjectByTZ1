@@ -3,12 +3,13 @@ package eu.laytin.projectbytz1.models;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class Person {
     private int id;
 
     @NotEmpty(message = "Name should not be empty")
-    @Pattern(regexp = "\"[A-Z]\\w+  [A-Z]\\w+ [A-Z]\\w+", message = "Format: A.A.Abc")
+    @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
     private String name;
 
     @Min(value = 1900, message = "Age should be greater than 1900")
