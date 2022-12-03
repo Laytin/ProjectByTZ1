@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Show</title>
+  <title>Учащийся</title>
 </head>
 <body>
 <p> Учащийся</p>
@@ -28,10 +28,9 @@
 </div>
 
 
-<form th:method="GET" th:action="@{/person/{id}(id=${person.getId()})/edit}">
+<form th:method="GET" th:action="@{/person/{id}/edit(id=${person.getId()})}">
   <input type="submit" value="Редактировать"/>
 </form>
-
 
 <form th:method="DELETE" th:action="@{/person/{id}(id=${person.getId()})}">
   <input type="submit" value="Удалить"/>
