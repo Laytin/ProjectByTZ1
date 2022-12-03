@@ -20,7 +20,6 @@
 
   <div th:each="book:${books}" >
     <p th:text="${book.getName()} + ', ' + ${book.getAuthor()}+', '+${book.getYear()}" style="display:inline-block">Book name</p>
-    <input type="submit" value="Сдать"/>
     <br/>
   </div>
 
