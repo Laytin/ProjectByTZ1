@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Книга</title>
+</head>
+<body>
+<p>Книга:</p>
+
+<p th:text="${book.getName()}+', '+${book.getAuthor()}+', '+ ${book.getYear()}">
+
+<hr/>
+
+<div th:if="${owner!=null}">
+  <p>Эта книга сейчас находится у учащегося:</p>
+  <a th:text="${owner.getName()} +' ' + ${owner.getYear()}"></a>
+
+  <form th:method="PATCH" th:action="@{/book/{id}/resetOwner(id=${book.getId()})}">
+    <input type="submit" value="Освободить книгу"/>
+  </form>
+  <hr/>
+</div>
+
+<div th:if="${persons!=null}">
+  <b>Назначить книгу:</b>
+  <br/>
+    <form th:method="PATCH"  th:action="@{/book/{id}/setOwner(id=${book.getId()})}">
+      <label for="person">Выберите человека</label>
+      <select th:object="${person}" th:field="*{id}" id="person">
+        <option th:each="person : ${persons}" th:value="${person.getId()}" th:text="${person.getName()}">
+        </option>
+      </select>
+      <input type="submit" value="Назначить книгу"/>
+    </form>
+  <hr/>
+</div>
+
+
+
+</body>
+</html>
